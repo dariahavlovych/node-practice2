@@ -11,7 +11,7 @@ export const setupServer = () => {
   app.use(express.json());
   app.use(cors());
 
-  //   app.use(contactsRouter);
+  //   app.use(productsRouter);
 
   //   app.use('*', notFoundHandler);
 
