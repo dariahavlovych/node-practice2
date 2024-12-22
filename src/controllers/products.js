@@ -6,9 +6,11 @@ import {
   deleteProduct,
 } from '../services/products.js';
 import createHttpError from 'http-errors';
+import { parseFilterParams } from '../utils/parseFilterParams.js';
 
 export const getProductsController = async (req, res) => {
-  const products = await getAllProducts();
+  const filter = parseFilterParams(req.query);
+  const products = await getAllProducts({ filter });
   res.status(200).json({
     status: 200,
     message: 'Successfully found products!',
