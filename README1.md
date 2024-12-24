@@ -30,7 +30,8 @@ accessToken - string, required
 refreshToken - string, required
 accessTokenValidUntil - Date, required
 refreshTokenValidUntil - Date, required
-Створіть роут POST /users/registerдля реєстрації нового користувача. Тіло запиту має в себе включати наступні властивості:
+
+Створіть роут POST /users/register для реєстрації нового користувача. Тіло запиту має в себе включати наступні властивості:
 
 name - обов’язково
 email - обов’язково
@@ -46,7 +47,9 @@ password - обов’язково
 status — статус відповіді
 message — повідомлення про результат виконання операції "Successfully registered a user!"
 data — дані створеного користувача
+
 TASK 4
+
 Створіть роут POST /users/login для аутентифікації користувача. Тіло запиту має в себе включати наступні властивості:
 
 email - обовʼязково
@@ -81,7 +84,7 @@ TASK 6
 
 TASK 7
 
-Створіть роут POST /users/logoutдля видалення сесії на основі id сесії та токена, який записаний в cookies.
+Створіть роут POST /users/logout для видалення сесії на основі id сесії та токена, який записаний в cookies.
 
 Обробка цього роута має включати:
 

@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import productsRouter from './routers/products.js';
+import usersRouter from './routers/users.js';
 
 import { env } from './utils/env.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -15,6 +16,7 @@ export const setupServer = () => {
   app.use(cors());
 
   app.use('/products', productsRouter);
+  app.use('/users', usersRouter);
 
   app.use('*', notFoundHandler);
 
