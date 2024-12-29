@@ -5,6 +5,7 @@ import { createUserSchema, loginUserSchema } from '../validation/users.js';
 import {
   createUserController,
   loginUserController,
+  logoutUserController,
 } from '../controllers/users.js';
 
 const router = new Router();
@@ -20,5 +21,7 @@ router.post(
   validateBody(loginUserSchema),
   ctrlWrapper(loginUserController),
 );
+
+router.post('/logout', ctrlWrapper(logoutUserController));
 
 export default router;
