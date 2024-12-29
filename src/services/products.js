@@ -1,7 +1,7 @@
 import { ProductsCollection } from '../db/models/products.js';
 
-export const getAllProducts = async ({ filter = {} }) => {
-  const searchQuery = ProductsCollection.find();
+export const getAllProducts = async ({ userId, filter = {} }) => {
+  const searchQuery = ProductsCollection.find({ userId });
 
   if (filter.category) {
     searchQuery.where('category').equals(filter.category);
@@ -19,8 +19,8 @@ export const getAllProducts = async ({ filter = {} }) => {
   return products;
 };
 
-export const getProductById = async (productId) => {
-  const product = await ProductsCollection.findById(productId);
+export const getProductById = async (productId, userId) => {
+  const product = await ProductsCollection.findOne({ _id: productId, userId });
   return product;
 };
 
@@ -29,9 +29,9 @@ export const createProduct = async (payload) => {
   return product;
 };
 
-export const updateProduct = async (productId, payload) => {
-  const product = await ProductsCollection.findByIdAndUpdate(
-    productId,
+export const updateProduct = async (productId, userId, payload) => {
+  const product = await ProductsCollection.findOneAndUpdate(
+    { _id: productId, userId },
     payload,
     {
       new: true,
@@ -41,7 +41,10 @@ export const updateProduct = async (productId, payload) => {
   return product.value;
 };
 
-export const deleteProduct = async (productId) => {
-  const product = await ProductsCollection.findByIdAndDelete(productId);
+export const deleteProduct = async (userId, productId) => {
+  const product = await ProductsCollection.findOneAndDelete({
+    _id: productId,
+    userId,
+  });
   return product;
 };

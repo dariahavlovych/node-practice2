@@ -1,4 +1,3 @@
-import { date } from 'joi';
 import { Schema, model } from 'mongoose';
 
 const SessionSchema = new Schema(
