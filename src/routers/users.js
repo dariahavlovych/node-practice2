@@ -6,6 +6,7 @@ import {
   createUserController,
   loginUserController,
   logoutUserController,
+  refreshSessionController,
 } from '../controllers/users.js';
 
 const router = new Router();
@@ -23,5 +24,7 @@ router.post(
 );
 
 router.post('/logout', ctrlWrapper(logoutUserController));
+
+router.post('/refresh', ctrlWrapper(refreshSessionController));
 
 export default router;
